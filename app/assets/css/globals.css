@@ -1,13 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;600;800&display=swap');
 @import "tailwindcss";
 
+/* Extending base styling */
+@layer base {
+  .container{ @apply mx-auto px-6 border-x border-dashed; max-width: none; border-color: var(--border); width: min(1750px, 91.4%); }
+
+  h1, h2, h3, h4, h5, h6 {@apply mb-4 mt-6;}
+  h1 { @apply text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] mt-0; }
+  h2 { color: var(--h2); @apply text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]; }
+  h3 { @apply text-2xl font-semibold; }
+  p { @apply mb-0 text-left text-base font-medium sm:text-sm; font-size: 18px; font-weight: 400;}
+  p+p { @apply mt-6; }
+  /* a { color: var(--linkColor); @apply underline hover:opacity-80; } */
+  code { @apply bg-gray-800 text-sm px-1 py-0.5 rounded; }
+  pre { @apply bg-gray-900 p-4 rounded-md overflow-x-auto; }
+  blockquote { @apply border-l-4 pl-4 italic text-gray-400; border-color: var(--border); }
+  ul:not(.reset), ol:not(.reset) { @apply mb-4 pl-6; }
+  .logosec svg{@apply inline-block;}
+  .reset{ @apply decoration-0 m-0 p-0;}
+}
+
 :root {
+  --bg: #000c19; /* DarkBlue */
   --bg: #101112;
   --text: #f0f0f0;
   --h2: #9f9fa9;
   --border: oklch(100% 0 0 / .1);
   --primar-color: #914bf1;
 }
+
 
 /* Light mode overrides */
 :root.light {
@@ -31,22 +51,11 @@ body {
   color: var(--text);
 }
 
-/* Global headings */
-h1, h2, h3, h4, h5, h6 {@apply mb-4 mt-6;}
-h1 { @apply text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] mt-0; }
-h2 { color: var(--h2); @apply text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1]; }
-h3 { @apply text-2xl font-semibold; }
-p { @apply mb-0 text-left text-base font-medium sm:text-sm; }
-p+p { @apply mt-6; }
-/* a { color: var(--linkColor); @apply underline hover:opacity-80; } */
-code { @apply bg-gray-800 text-sm px-1 py-0.5 rounded; }
-pre { @apply bg-gray-900 p-4 rounded-md overflow-x-auto; }
-blockquote { @apply border-l-4 pl-4 italic text-gray-400; border-color: var(--border); }
-ul:not(.reset), ol:not(.reset) { @apply mb-4 pl-6; }
+
 /* Layout helpers */
-.app-shell { @apply min-h-screen flex flex-col; }
+/* .app-shell { @apply min-h-screen flex flex-col; } */
 .content-area { @apply flex-1 p-10; }
-.sidebar { @apply w-56 pr-6 h-[calc(100vh-3rem)] overflow-auto border-r border-dashed; border-color: var(--border); }
+.sidebar { @apply w-56 pr-6 h-[calc(100vh-8rem)] overflow-auto border-r border-dashed; border-color: var(--border); }
 .header { @apply flex items-center justify-between border-b; border-color: var(--border) }
 .footer { @apply py-4 text-center text-sm opacity-70 border-t; border-color: var(--border); }
 
@@ -55,8 +64,6 @@ ul:not(.reset), ol:not(.reset) { @apply mb-4 pl-6; }
 /* Small tweaks for sidebar links */
 .sidebar a { @apply py-3 px-4 rounded-md text-sm hover:bg-gray-800; }
 .sidebar a.active { @apply bg-gray-800 font-semibold; }
-
-.container{ @apply mx-auto px-6 border-x border-dashed; max-width: none; border-color: var(--border); width: min(1750px, 91.4%); }
 
 /* Clock styles */
 .clock { @apply px-3 py-1 rounded-full text-sm font-normal border; border-color: var(--border); background-color: rgba(255, 255, 255, 0.05);}
