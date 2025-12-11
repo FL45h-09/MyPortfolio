@@ -19,11 +19,8 @@ export const SocialIcons = () => {
 
             return (
               <li key={index} className="leading-0">
-                <a
-                  href={href}
-                  aria-label={item.key}
-                  target={item.key === "mail" ? "" : "_blank"}
-                  className="inline-block p-2 rounded-full hover:bg-gray-800 transition"
+                <a href={href} aria-label={item.key} target={item.key === "mail" ? "" : "_blank"}
+                  className="inline-block p-2 rounded-full btn-hover-bg transition"
                 >
                   <Icon /> {/* ← render properly */}
                 </a>

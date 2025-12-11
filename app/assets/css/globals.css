@@ -17,6 +17,7 @@
   ul:not(.reset), ol:not(.reset) { @apply mb-4 pl-6; }
   .logosec svg{@apply inline-block;}
   .reset{ @apply decoration-0 m-0 p-0;}
+  .btn-hover-bg:hover{background: var(--btn-bg);}
 }
 
 :root {
@@ -24,8 +25,12 @@
   --bg: #101112;
   --text: #f0f0f0;
   --h2: #9f9fa9;
-  --border: oklch(100% 0 0 / .1);
+  --border: rgba(255, 255, 255, 0.1);
   --primar-color: #914bf1;
+  --btn-bg: rgba(30, 41, 57, 1);
+  --stats-card-bg: rgba(11, 11, 15);
+  --stats-card-border: rgba(255, 255, 255, 0.10);
+  --stats-card-green: rgb(13 84 43);
 }
 
 
@@ -34,7 +39,11 @@
   --bg: #f0f0f0;
   --text: #000000;
   --h2: #9f9fa9;
-  --border: oklch(92% .004 286.32);
+  --border: rgba(188,188,188,1);
+  --btn-bg: rgba(230, 230, 230, 1);
+  --stats-card-bg: rgba(230, 230, 230, 1);
+  --stats-card-border: rgba(0, 0, 0, 0.10);
+  /* --btn-bg: rgba(145, 75, 241, 0.05); */
 }
 
 html, body, #root { height: 100%; margin: 0; padding: 0; }
@@ -55,18 +64,18 @@ body {
 /* Layout helpers */
 /* .app-shell { @apply min-h-screen flex flex-col; } */
 .content-area { @apply flex-1 p-6 xl:p-10 lg:p-8 md:p-6; }
-.sidebar { @apply w-56 px-6 h-full overflow-auto border-r border-dashed; border-color: var(--border); }
-.header { @apply flex items-center justify-between border-b; border-color: var(--border) }
-.footer { @apply py-4.5 text-center text-sm opacity-70 border-t; border-color: var(--border); }
+.sidebar { @apply w-56 px-6 h-full overflow-auto border-r border-(--border) border-dashed;}
+.header { @apply flex items-center justify-between border-b border-(--border);}
+.footer { @apply py-4.5 text-center text-sm opacity-70 border-t border-(--border);}
 
-.btn{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition cursor-pointer; background-color: var(--primar-color); color: #fff; }
+.btn{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md bg-(--btn-bg) transition cursor-pointer; background-color: var(--primar-color); color: #fff; }
 
 /* Small tweaks for sidebar links */
-.sidebar a { @apply py-3 px-4 rounded-md text-sm hover:bg-gray-800; }
-.sidebar a.active { @apply bg-gray-800 font-semibold; }
+.sidebar a { @apply py-3 px-4 rounded-md text-sm; }
+.sidebar a.active { @apply font-semibold; background: var(--btn-bg);}
 
 /* Clock styles */
-.clock { @apply px-3 py-1 rounded-full text-sm font-normal border; border-color: var(--border); background-color: rgba(255, 255, 255, 0.05);}
+.clock { @apply px-3 py-1 rounded-full text-sm font-normal border border-(--border) bg-(--btn-bg);}
 
 /* add near the bottom of globals.css */
 @keyframes cinematic-in {

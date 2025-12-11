@@ -19,15 +19,15 @@ export function ContactForm() {
         
         {/* Full Name */}
         <li className="sm:col-span-1">
-          <label htmlFor='fullname' className="block mb-2 text-sm font-medium text-neutral-300">Full Name *</label>
+          <label htmlFor='fullname' className="block mb-2 text-sm font-medium text-(--text)">Full Name *</label>
           <input
             id="fullname"
             name="fullName"
             required
             autoComplete="name"
-            className="w-full p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 
-            text-neutral-200 placeholder:text-neutral-500
-            focus:border-site-primary focus:ring-1 focus:ring-site-primary 
+            className="w-full p-3 rounded-xl bg-(--btn-bg) border border-(--border) 
+            text-(--text) placeholder:text-neutral-500
+            focus:border-(--primar-color) focus:ring-1 focus:ring-site-primary 
             outline-none transition-all"
           />
           <ValidationError prefix="Name" field="fullName" errors={state.errors} />
@@ -35,7 +35,7 @@ export function ContactForm() {
 
         {/* Email */}
         <li className="sm:col-span-1">
-          <label htmlFor='email' className="block mb-2 text-sm font-medium text-neutral-300">
+          <label htmlFor='email' className="block mb-2 text-sm font-medium text-(--text)">
             Email Address *
           </label>
           <input
@@ -44,9 +44,9 @@ export function ContactForm() {
             type="email"
             required
             autoComplete="email"
-            className="w-full p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 
-            text-neutral-200 placeholder:text-neutral-500
-            focus:border-site-primary focus:ring-1 focus:ring-site-primary 
+            className="w-full p-3 rounded-xl bg-(--btn-bg) border border-(--border) 
+            text-(--text) placeholder:text-neutral-500
+            focus:border-(--primar-color) focus:ring-1 focus:ring-site-primary 
             outline-none transition-all"
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -54,7 +54,7 @@ export function ContactForm() {
 
         {/* Message */}
         <li className="sm:col-span-2">
-          <label htmlFor='message' className="block mb-2 text-sm font-medium text-neutral-300">
+          <label htmlFor='message' className="block mb-2 text-sm font-medium text-(--text)">
             Message *
           </label>
           <textarea
@@ -62,9 +62,9 @@ export function ContactForm() {
             name="message"
             required
             autoComplete="message"
-            className="w-full h-40 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 
-            text-neutral-200 placeholder:text-neutral-500
-            focus:border-site-primary focus:ring-1 focus:ring-site-primary 
+            className="w-full h-40 p-3 rounded-xl bg-(--btn-bg) border border-(--border) 
+            text-(--text) placeholder:text-neutral-500
+            focus:border-(--primar-color) focus:ring-1 focus:ring-site-primary 
             outline-none transition-all resize-none"
           />
           <ValidationError prefix="Message" field="message" errors={state.errors} />

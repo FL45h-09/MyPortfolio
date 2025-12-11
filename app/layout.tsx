@@ -6,6 +6,7 @@ import { Sidebar } from '@/components/molecules/Sidebar';
 import { Footer } from '@/components/molecules/Footer';
 import { PageStepper } from "@/components/molecules/PageStepper";
 import { ProfileData as data } from "./config/content";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,10 +30,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* THEME LOADING SCRIPT — put this EXACTLY here */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.classList.add(theme);
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="wrapper">
           <Header />
-          <div className="container mx-auto px-4 grid lg:grid-cols-[14rem_1fr] grid-cols-1 min-h-[calc(100vh-122px)]">
+          <div className="container mx-auto grid lg:grid-cols-[14rem_1fr] grid-cols-1 min-h-[calc(100vh-122px)]">
             <Sidebar />
             <main className="content-area">
               <div className="maincontent">{children}</div>

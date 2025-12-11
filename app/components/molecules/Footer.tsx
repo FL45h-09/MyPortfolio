@@ -1,7 +1,7 @@
 import React from 'react';
-import { BiHeart } from 'react-icons/bi';
+import { ProfileData as data } from '@/config/content';
 
 
 export const Footer: React.FC = () => (
-    <footer className="footer"><p className='text-base text-center'>&copy; {new Date().getFullYear()} — Built with ❤️ using Next.js + TypeScript + Tailwind.</p></footer>
+    <footer className="footer"><p className='text-base text-center'>&copy; {new Date().getFullYear()} — Built with ❤️ by {data.fname} using Next.js + TypeScript + Tailwind.</p></footer>
 );

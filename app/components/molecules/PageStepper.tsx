@@ -32,7 +32,7 @@ export function PageStepper() {
       {isFirst ? (
         <Link href="/resume.pdf" target="_blank" className="btn">Get Resume <FiExternalLink /></Link>
       ) : (
-        <Link href={prevItem!.href} className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition group">
+        <Link href={prevItem!.href} className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md btn-hover-bg transition group">
           <IoIosArrowBack className="h-4 w-4 transition group-hover:-translate-x-1" /> {prevItem!.label}
         </Link>
       )}
@@ -43,7 +43,7 @@ export function PageStepper() {
       ) : (
         <Link
           href={nextItem!.href}
-          className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition group"
+          className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md btn-hover-bg transition group"
         >
           {nextItem!.label}
           <IoIosArrowForward className="h-4 w-4 transition group-hover:translate-x-1" />

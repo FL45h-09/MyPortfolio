@@ -62,14 +62,14 @@ export function StatsSection({ githubData = [], stats }: StatsSectionProps) {
       {/* ============ TOP CARDS ============ */}
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6">
         {/* Total Views */}
-        <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg">
+        <div className="bg-(--stats-card-bg) border border-(--stats-card-border) rounded-2xl p-6 shadow-lg">
           <h3 className="text-md opacity-70 mb-2">Total Views</h3>
           <p className="sm:text-2xl  md:text-3xl lg:text-5xl font-extrabold text-purple-400">{visits}</p>
           <p className="text-sm opacity-60 mt-1">Unique page visits since Oct 2025</p>
         </div>
 
         {/* Appreciation Count */}
-        <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg">
+        <div className="bg-(--stats-card-bg) border border-(--stats-card-border) rounded-2xl p-6 shadow-lg">
           <h3 className="text-md opacity-70 mb-2">Appreciation Count</h3>
           <p className="sm:text-2xl  md:text-3xl lg:text-5xl font-extrabold text-red-400">{appreciations}</p>
 
@@ -82,7 +82,7 @@ export function StatsSection({ githubData = [], stats }: StatsSectionProps) {
         <h2 className="text-2xl font-bold mb-4">GitHub Stats</h2>
         <p className="text-sm opacity-70 mb-6">Insights and metrics about my GitHub profile</p>
 
-        <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg mt-6 w-full max-w-full overflow-x-auto">
+        <div className="bg-(--stats-card-bg) border border-(--stats-card-border) rounded-2xl p-6 shadow-lg mt-6 w-full max-w-full overflow-x-auto">
           {/* <div className="min-w-[1050px]"> */}
             {githubData.length === 0 ? (
                 <div className="grid grid-cols-[repeat(53,1fr)] gap-[3px] py-6">
@@ -148,8 +148,8 @@ type StatCardProp = {
 function StatCard({ label, value, green = false }: StatCardProp) {
   return (
     <div
-      className={`rounded-2xl p-6 border border-white/10 shadow-md ${
-        green ? "bg-green-900/40" : "bg-[#0b0b0f]"
+      className={`rounded-2xl p-6 border border-(--stats-card-border) shadow-md ${
+        green ? "bg-(--stats-card-green) text-white" : "bg-(--stats-card-bg)"
       }`}
     >
       <p className="opacity-70 mb-1 text-sm">{label}</p>
