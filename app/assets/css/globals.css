@@ -66,7 +66,7 @@ body {
 .content-area { @apply flex-1 p-6 xl:p-10 lg:p-8 md:p-6; }
 .sidebar { @apply w-56 px-6 h-full overflow-auto border-r border-(--border) border-dashed;}
 .header { @apply flex items-center justify-between border-b border-(--border);}
-.footer { @apply py-4.5 text-center text-sm opacity-70 border-t border-(--border);}
+.footer { @apply text-center text-sm opacity-70 border-t border-(--border);}
 
 .btn{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md bg-(--btn-bg) transition cursor-pointer; background-color: var(--primar-color); color: #fff; }
 
