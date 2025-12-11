@@ -30,7 +30,7 @@ export function PageStepper() {
 
       {/* LEFT SIDE BUTTON */}
       {isFirst ? (
-        <Link href="/resume.pdf" target="_blank" className="btn">Get Resume <FiExternalLink /></Link>
+        <Link href="/resume.pdf" download={true} className="btn">Get Resume <FiExternalLink /></Link>
       ) : (
         <Link href={prevItem!.href} className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md btn-hover-bg transition group">
           <IoIosArrowBack className="h-4 w-4 transition group-hover:-translate-x-1" /> {prevItem!.label}
@@ -39,7 +39,7 @@ export function PageStepper() {
 
       {/* RIGHT SIDE BUTTON */}
       {isLast ? (
-        <Link href="/resume.pdf" target="_blank" className="btn">Get Resume <FiExternalLink /></Link>
+        <Link href="/resume.pdf" download={true} className="btn">Get Resume <FiExternalLink /></Link>
       ) : (
         <Link
           href={nextItem!.href}
