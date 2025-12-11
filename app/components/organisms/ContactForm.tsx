@@ -1,110 +1,89 @@
 'use client';
 
-import { useState } from "react";
+import { useForm, ValidationError } from '@formspree/react';
 
-type FormData = {
-  fullName: string;
-  email: string;
-  contact?: string;
-  message: string;
-};
+export function ContactForm() {
+  const [state, handleSubmit] = useForm("xwpgqqak");
 
-export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-
-    const form = new FormData(e.currentTarget);
-
-    const data: FormData = {
-      fullName: form.get("fullName") as string,
-      email: form.get("email") as string,
-      contact: form.get("contact") as string,
-      message: form.get("message") as string,
-    };
-
-    const res = await fetch("/api/send-email", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-
-    setLoading(false);
-
-    if (!res.ok) {
-      setError("Something went sideways. Try again?");
-      return;
-    }
-
-    setSubmitted(true);
-  };
-
-  if (submitted) {
+  if (state.succeeded) {
     return (
-      <div className="mt-6 p-6 rounded-xl bg-neutral-900 border border-neutral-800 text-center animate-fade-in">
-        <h2 className="text-2xl font-semibold text-site-primary mb-2">
-          You're awesome. fr. 🙌
-        </h2>
-        <p className="opacity-80 max-w-xl mx-auto">
-          Thanks for taking time to reach out.  
-          I’ll hit you back faster than a React hot reload. ⚡
-        </p>
-      </div>
+      <p className="text-green-400 text-lg font-medium mt-4">
+        Thanks for reaching out! 🚀
+      </p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-xl">
-      {error && <p className="text-red-500">{error}</p>}
+    <form onSubmit={handleSubmit} className="w-full lg:max-w-3xl">
+      <ul className="reset grid grid-cols-1 sm:grid-cols-2 gap-6">
+        
+        {/* Full Name */}
+        <li className="sm:col-span-1">
+          <label htmlFor='fullname' className="block mb-2 text-sm font-medium text-neutral-300">Full Name *</label>
+          <input
+            id="fullname"
+            name="fullName"
+            required
+            autoComplete="name"
+            className="w-full p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 
+            text-neutral-200 placeholder:text-neutral-500
+            focus:border-site-primary focus:ring-1 focus:ring-site-primary 
+            outline-none transition-all"
+          />
+          <ValidationError prefix="Name" field="fullName" errors={state.errors} />
+        </li>
 
-      <div>
-        <label className="block mb-1 font-medium">Full Name *</label>
-        <input
-          name="fullName"
-          required
-          className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-800 focus:border-site-primary outline-none"
-        />
-      </div>
+        {/* Email */}
+        <li className="sm:col-span-1">
+          <label htmlFor='email' className="block mb-2 text-sm font-medium text-neutral-300">
+            Email Address *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            className="w-full p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 
+            text-neutral-200 placeholder:text-neutral-500
+            focus:border-site-primary focus:ring-1 focus:ring-site-primary 
+            outline-none transition-all"
+          />
+          <ValidationError prefix="Email" field="email" errors={state.errors} />
+        </li>
 
-      <div>
-        <label className="block mb-1 font-medium">Email *</label>
-        <input
-          type="email"
-          name="email"
-          required
-          className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-800 focus:border-site-primary outline-none"
-        />
-      </div>
+        {/* Message */}
+        <li className="sm:col-span-2">
+          <label htmlFor='message' className="block mb-2 text-sm font-medium text-neutral-300">
+            Message *
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            autoComplete="message"
+            className="w-full h-40 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 
+            text-neutral-200 placeholder:text-neutral-500
+            focus:border-site-primary focus:ring-1 focus:ring-site-primary 
+            outline-none transition-all resize-none"
+          />
+          <ValidationError prefix="Message" field="message" errors={state.errors} />
+        </li>
 
-      <div>
-        <label className="block mb-1 font-medium">Contact (optional)</label>
-        <input
-          name="contact"
-          className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-800"
-        />
-      </div>
+        {/* Submit button */}
+        <li className="sm:col-span-2">
+          <button
+            type="submit"
+            disabled={state.submitting}
+            className="btn w-full sm:w-auto px-6 py-3 rounded-xl bg-site-primary text-black 
+            font-semibold hover:bg-site-primary/90 active:scale-95 transition-all 
+            disabled:opacity-50 disabled:cursor-not-allowed justify-center"
+          >
+            {state.submitting ? "Sending..." : "Submit"}
+          </button>
+        </li>
 
-      <div>
-        <label className="block mb-1 font-medium">Message *</label>
-        <textarea
-          name="message"
-          required
-          rows={5}
-          className="w-full p-3 rounded-lg bg-neutral-900 border border-neutral-800 focus:border-site-primary outline-none"
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="px-6 py-3 rounded-md text-sm font-medium transition text-white bg-site-primary hover:bg-site-primary/90 disabled:opacity-50 disabled:cursor-not-allowed bg-purple-600 hover:bg-purple-500 border border-gray-700 pointer-events-auto"
-      >
-        {loading ? "Sending..." : "Send Message"}
-      </button>
+      </ul>
     </form>
   );
 }

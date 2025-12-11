@@ -1,6 +1,7 @@
 import { SiHtml5, SiCss3, SiTailwindcss, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiPhp, SiMysql, SiNodedotjs, SiMongodb } from "react-icons/si";
 import { FaCodeCommit } from "react-icons/fa6";
-import { PiDevToLogoLight } from "react-icons/pi";
+import { FiMail, FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
+import { FaXTwitter } from "react-icons/fa6";
 import { GiMaterialsScience } from "react-icons/gi";
 import { link } from "fs";
 
@@ -38,7 +39,7 @@ export const ProfileData = {
         title: "Nike Reimagined | Modern Redesign Concept",
         description:
           "A sleek and modern redesign of Nike’s official web experience built with React and Tailwind CSS.",
-        link: "#"
+        link: "https://google.com"
       },
       {
         id: "p2",
@@ -133,11 +134,37 @@ export const ProfileData = {
         }
     ],
     stats: { projects: 12, yearsExp: 6 },
-    socials: { 
-      mail: "vishal.ravanank@gmail.com",
-      github: 'https://github.com/',
-      linkedin: 'https://linkedin.com/',
-      twitter: '',
-      instagram: ''
-    },
+    socials: [
+      {
+        key: "mail",
+        label: "Email",
+        url: "vishal.ravanank@gmail.com",
+        icon: FiMail,
+        isMail: true,
+      },
+      {
+        key: "github",
+        label: "GitHub",
+        url: "https://github.com/",
+        icon: FiGithub,
+      },
+      {
+        key: "linkedin",
+        label: "LinkedIn",
+        url: "https://linkedin.com/",
+        icon: FiLinkedin,
+      },
+      {
+        key: "instagram",
+        label: "Instagram",
+        url: "",
+        icon: FiInstagram,
+      },
+      {
+        key: "twitter",
+        label: "Twitter",
+        url: "",
+        icon: FaXTwitter,
+      },
+    ],
 };

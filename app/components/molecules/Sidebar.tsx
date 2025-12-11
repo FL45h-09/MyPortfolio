@@ -4,7 +4,7 @@ import { navLinks as items } from '@/config/NavLinks';
 
 export const Sidebar: React.FC = () => {
     return (
-        <aside className="sidebar bg-transparent">
+        <aside className="sidebar h-full bg-transparent hidden lg:inline-block">
             <nav className="mt-6">
                 {items.map((it) => (
                     <Link key={it.href} href={it.href} className="flex items-center gap-2 text-sm px-2 py-3 rounded-md hover:bg-gray-800">

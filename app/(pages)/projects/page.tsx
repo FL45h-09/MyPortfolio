@@ -5,7 +5,7 @@ export default function Projects() {
     <div className="home">
       <h1>Projects</h1>
       <h2>A coder by day, problem-solver by night!</h2>
-      <ProjectsList />
+      <div className="mt-8"><ProjectsList /></div>
     </div>
   );
 }

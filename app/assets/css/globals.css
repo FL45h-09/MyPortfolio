@@ -2,7 +2,7 @@
 
 /* Extending base styling */
 @layer base {
-  .container{ @apply mx-auto px-6 border-x border-dashed; max-width: none; border-color: var(--border); width: min(1750px, 91.4%); }
+  .container{ @apply mx-auto border-x border-dashed; max-width: none !important; border-color: var(--border); width: min(1750px, 91.4%) !important; }
 
   h1, h2, h3, h4, h5, h6 {@apply mb-4 mt-6;}
   h1 { @apply text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-4xl lg:leading-[1.1] mt-0; }
@@ -54,12 +54,12 @@ body {
 
 /* Layout helpers */
 /* .app-shell { @apply min-h-screen flex flex-col; } */
-.content-area { @apply flex-1 p-10; }
-.sidebar { @apply w-56 pr-6 h-[calc(100vh-8rem)] overflow-auto border-r border-dashed; border-color: var(--border); }
+.content-area { @apply flex-1 p-6 xl:p-10 lg:p-8 md:p-6; }
+.sidebar { @apply w-56 px-6 h-full overflow-auto border-r border-dashed; border-color: var(--border); }
 .header { @apply flex items-center justify-between border-b; border-color: var(--border) }
-.footer { @apply py-4 text-center text-sm opacity-70 border-t; border-color: var(--border); }
+.footer { @apply py-4.5 text-center text-sm opacity-70 border-t; border-color: var(--border); }
 
-.resumelink{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition; background-color: var(--primar-color); color: #fff; }
+.btn{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition cursor-pointer; background-color: var(--primar-color); color: #fff; }
 
 /* Small tweaks for sidebar links */
 .sidebar a { @apply py-3 px-4 rounded-md text-sm hover:bg-gray-800; }
@@ -94,10 +94,36 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .sidebar { @apply hidden; }
   .content-area { @apply pl-4 pt-24; }
 }
 @media (max-width: 480px) {
   .header { @apply px-4; }
+} */
+
+/* === Custom Scrollbar (Dark + Purple Theme) === */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* deep dark */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #914bf1; /* primary purple */
+  border-radius: 9999px;
+  border: 2px solid #0a0a0a; /* creates that nice inset gap */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7b3ad9; /* darker hover */
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #914bf1 #0a0a0a;
 }

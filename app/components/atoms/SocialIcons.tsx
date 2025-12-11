@@ -1,17 +1,8 @@
 import { ProfileData as data } from '@/config/content';
 import { IconContext } from 'react-icons';
-import { FiMail, FiGithub, FiLinkedin, FiInstagram } from 'react-icons/fi';
-import { FaXTwitter } from "react-icons/fa6";
 
 export const SocialIcons = () => {
-
-  const socials = [
-    { key: "mail",      url: data.socials.mail,      icon: <FiMail /> },
-    { key: "github",    url: data.socials.github,    icon: <FiGithub /> },
-    { key: "linkedin",  url: data.socials.linkedin,  icon: <FiLinkedin /> },
-    { key: "instagram", url: data.socials.instagram, icon: <FiInstagram /> },
-    { key: "twitter",   url: data.socials.twitter,   icon: <FaXTwitter /> },
-  ];
+  const { socials } = data;
 
   return (
     <IconContext.Provider value={{ size: "1.25rem" }}>
@@ -19,6 +10,8 @@ export const SocialIcons = () => {
         {socials
           .filter((item) => item.url && item.url.trim() !== "")
           .map((item, index) => {
+            const Icon = item.icon; // ← IMPORTANT FIX
+
             const href =
               item.key === "mail"
                 ? `mailto:${item.url}`
@@ -26,11 +19,13 @@ export const SocialIcons = () => {
 
             return (
               <li key={index} className="leading-0">
-                <a href={href} className="inline-block p-2 rounded-full hover:bg-gray-800 transition"
+                <a
+                  href={href}
                   aria-label={item.key}
                   target={item.key === "mail" ? "" : "_blank"}
+                  className="inline-block p-2 rounded-full hover:bg-gray-800 transition"
                 >
-                  {item.icon}
+                  <Icon /> {/* ← render properly */}
                 </a>
               </li>
             );

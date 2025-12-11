@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="wrapper">
           <Header />
-          <div className="container flex">
+          <div className="container mx-auto px-4 grid lg:grid-cols-[14rem_1fr] grid-cols-1 min-h-[calc(100vh-122px)]">
             <Sidebar />
             <main className="content-area">
               <div className="maincontent">{children}</div>

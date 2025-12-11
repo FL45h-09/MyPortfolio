@@ -58,73 +58,71 @@ export function StatsSection({ githubData = [], stats }: StatsSectionProps) {
     setAppreciations(newCount);
   };
   return (
-    <section className="w-full space-y-12 py-12">
+    <section className="w-full space-y-12">
       {/* ============ TOP CARDS ============ */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6">
         {/* Total Views */}
         <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg">
           <h3 className="text-md opacity-70 mb-2">Total Views</h3>
-          <p className="text-5xl font-extrabold text-purple-400">{visits}</p>
-          <p className="text-xs opacity-60 mt-1">Unique page visits since Oct 2025</p>
+          <p className="sm:text-2xl  md:text-3xl lg:text-5xl font-extrabold text-purple-400">{visits}</p>
+          <p className="text-sm opacity-60 mt-1">Unique page visits since Oct 2025</p>
         </div>
 
         {/* Appreciation Count */}
         <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg">
           <h3 className="text-md opacity-70 mb-2">Appreciation Count</h3>
-          <p className="text-5xl font-extrabold text-red-400">{appreciations}</p>
+          <p className="sm:text-2xl  md:text-3xl lg:text-5xl font-extrabold text-red-400">{appreciations}</p>
 
           <button onClick={handleAppreciate} className="mt-4 px-5 py-2 rounded-full bg-purple-600 text-white font-medium hover:bg-purple-700 transition">❤️ Love this portfolio</button>
         </div>
       </div>
 
       {/* ============ GITHUB STATS ============ */}
-      <div>
+      <div className="gitstat">
         <h2 className="text-2xl font-bold mb-4">GitHub Stats</h2>
         <p className="text-sm opacity-70 mb-6">Insights and metrics about my GitHub profile</p>
 
-        <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg mt-6">
-        {githubData.length === 0 ? (
-            <div className="grid grid-cols-[repeat(53,1fr)] gap-[3px] py-6">
-            {[...Array(53 * 7)].map((_, i) => (
-              <div
-                key={i}
-                className="w-3 h-3 rounded bg-white/5 animate-pulse"
-                style={{ animationDelay: `${(i % 7) * 50}ms` }}
+        <div className="bg-[#0b0b0f] border border-white/10 rounded-2xl p-6 shadow-lg mt-6 w-full max-w-full overflow-x-auto">
+          {/* <div className="min-w-[1050px]"> */}
+            {githubData.length === 0 ? (
+                <div className="grid grid-cols-[repeat(53,1fr)] gap-[3px] py-6">
+                {[...Array(53 * 7)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="w-3 h-3 rounded bg-white/5 animate-pulse block"
+                    style={{ animationDelay: `${(i % 7) * 50}ms` }}
+                  />
+                ))}
+              </div>
+            ) : (
+              <ActivityCalendar data={githubData} labels={{ totalCount: "{{count}} contributions in the last year", }}
+                theme={{
+                    dark: [
+                        "#111318", // level 0
+                        "#14432D", // level 1
+                        "#1FAD50", // level 2
+                        "#0FDD51", // level 3
+                        "#56FF75", // level 4
+                    ],
+                }}
+                style={{ display: "block" }}
+                colorScheme="dark"
+                renderBlock={(block, activity) =>
+                  React.cloneElement(block, {
+                    style: {
+                      ...block.props.style,
+                      borderRadius: "4px",
+                    },
+                  })
+                }
               />
-            ))}
-          </div>
-        ) : (
-                
-          <ActivityCalendar
-            data={githubData}
-            labels={{
-              totalCount: "{{count}} contributions in the last year",
-            }}
-            theme={{
-                dark: [
-                    "#111318", // level 0
-                    "#14432D", // level 1
-                    "#1FAD50", // level 2
-                    "#0FDD51", // level 3
-                    "#56FF75", // level 4
-                ],
-            }}
-            colorScheme="dark"
-            renderBlock={(block, activity) =>
-              React.cloneElement(block, {
-                style: {
-                  ...block.props.style,
-                  borderRadius: "4px",
-                },
-              })
-            }
-          />
-        )}
+            )}
+            {/* </div> */}
         </div>
       </div>
 
       {/* ============ MORE STATS GRID ============ */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         <StatCard label="Hireable" value={ProfileData?.Availability ? "Yes" : "No"} green />
 
         <StatCard label="Total Public Repos" value={stats?.publicRepos} />
@@ -155,7 +153,7 @@ function StatCard({ label, value, green = false }: StatCardProp) {
       }`}
     >
       <p className="opacity-70 mb-1 text-sm">{label}</p>
-      <p className="text-3xl font-bold">{value}</p>
+      <p className="lg:text-2xl md:text-xl text-lg font-bold">{value}</p>
     </div>
   );
 }
