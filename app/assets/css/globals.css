@@ -21,12 +21,11 @@
 }
 
 :root {
-  --bg: #000c19; /* DarkBlue */
   --bg: #101112;
   --text: #f0f0f0;
   --h2: #9f9fa9;
   --border: rgba(255, 255, 255, 0.1);
-  --primar-color: #914bf1;
+  --primary-color: #914bf1;
   --btn-bg: rgba(30, 41, 57, 1);
   --stats-card-bg: rgba(11, 11, 15);
   --stats-card-border: rgba(255, 255, 255, 0.10);
@@ -46,19 +45,12 @@
   /* --btn-bg: rgba(145, 75, 241, 0.05); */
 }
 
-html, body, #root { height: 100%; margin: 0; padding: 0; }
+html, body, #root { margin: 0; padding: 0; }
 
-html {
-  font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
-}
-
+html { font-family: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
 
 /* Apply theme colors */
-body {
-  background-color: var(--bg);
-  color: var(--text);
-}
+body { background-color: var(--bg); color: var(--text); }
 
 
 /* Layout helpers */
@@ -68,7 +60,7 @@ body {
 .header { @apply flex items-center justify-between border-b border-(--border);}
 .footer { @apply text-center text-sm opacity-70 border-t border-(--border);}
 
-.btn{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md bg-(--btn-bg) transition cursor-pointer; background-color: var(--primar-color); color: #fff; }
+.btn{ @apply flex items-center gap-2 px-4 py-2 text-sm border border-gray-700 rounded-md bg-(--btn-bg) transition cursor-pointer; background-color: var(--primary-color); color: #fff; }
 
 /* Small tweaks for sidebar links */
 .sidebar a { @apply py-3 px-4 rounded-md text-sm; }
@@ -83,56 +75,20 @@ body {
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.animate-cinematic-in {
-  animation: cinematic-in .5s cubic-bezier(.2,.9,.2,1) both;
-}
+.animate-cinematic-in { animation: cinematic-in .5s cubic-bezier(.2,.9,.2,1) both; }
 
 /* floating label micro tweaks */
-.input-label {
-  transition: transform .18s ease, opacity .18s ease, font-size .18s ease;
-  transform-origin: left top;
-}
+.input-label { transition: transform .18s ease, opacity .18s ease, font-size .18s ease; transform-origin: left top; }
 
 .react-activity-calendar{@apply max-w-full w-full;}
 .react-activity-calendar svg{@apply max-w-full w-full;}
 .input-field:focus + .input-label,
-.input-field:not(:placeholder-shown) + .input-label {
-  @apply text-sm;
-  transform: translateY(-1.5rem) scale(0.85);
-  opacity: 0.75;
-}
-
-/* Responsive */
-/* @media (max-width: 768px) {
-  .sidebar { @apply hidden; }
-  .content-area { @apply pl-4 pt-24; }
-}
-@media (max-width: 480px) {
-  .header { @apply px-4; }
-} */
+.input-field:not(:placeholder-shown) + .input-label { @apply text-sm; transform: translateY(-1.5rem) scale(0.85); opacity: 0.75; }
 
 /* === Custom Scrollbar (Dark + Purple Theme) === */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a; /* deep dark */
-}
-
-::-webkit-scrollbar-thumb {
-  background: #914bf1; /* primary purple */
-  border-radius: 9999px;
-  border: 2px solid #0a0a0a; /* creates that nice inset gap */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #7b3ad9; /* darker hover */
-}
-
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #914bf1; border-radius: 9999px; border: 2px solid #0a0a0a; }
+::-webkit-scrollbar-thumb:hover { background: #7b3ad9; }
 /* Firefox support */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #914bf1 #0a0a0a;
-}
+* { scrollbar-width: thin; scrollbar-color: #914bf1 #0a0a0a; }

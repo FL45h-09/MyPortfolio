@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { initTheme } from '@/lib/theme';
+// import { initTheme } from '@/lib/theme';
 
 export const ClockSection = () => {
     const [time, setTime] = useState('00:00:00 00');
     useEffect(() => {
-        initTheme(true); // default dark
+        // initTheme(true); // default dark
         const t = setInterval(() => {
         const d = new Date();
         let hours = d.getHours();
@@ -19,7 +19,7 @@ export const ClockSection = () => {
     }, []);
   return (
     <div className="clock flex justify-between items-center gap-2 rounded-full bg-(--btn-bg) border border-gray-700 px-3 py-1 text-xsm font-normal min-w-[132px] min-h-[30px]">
-        <div className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--primar-color) opacity-75"></span><span className="relative inline-flex h-2 w-2 rounded-full bg-[#914bf1]"></span></div>
+        <div className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--primary-color) opacity-75"></span><span className="relative inline-flex h-2 w-2 rounded-full bg-[#914bf1]"></span></div>
         {time}
     </div>
   )

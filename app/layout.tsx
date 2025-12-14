@@ -33,17 +33,23 @@ export default function RootLayout({
       <head>
         {/* THEME LOADING SCRIPT — put this EXACTLY here */}
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme') || 'dark';
-                  document.documentElement.classList.add(theme);
-                } catch (e) {}
-              })();
-            `
-          }}
-        />
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function() {
+                  try {
+                    const stored = localStorage.getItem('theme');
+                    const theme = stored || 'dark';
+
+                    if (theme === 'light') {
+                      document.documentElement.classList.add('light');
+                    } else {
+                      document.documentElement.classList.remove('light');
+                    }
+                  } catch (e) {}
+                })();
+              `
+            }}
+          />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="wrapper">

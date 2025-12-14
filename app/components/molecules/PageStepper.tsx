@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks } from "@/config/NavLinks";
+import { ProfileData as data } from "@/config/content";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { FiExternalLink, FiHome } from "react-icons/fi";
 
 export function PageStepper() {
   const pathname = usePathname();
+  const { navLinks } = data;
   const currentIndex = navLinks.findIndex((item) => item.href === pathname);
 
   // 🚨 If current page is NOT part of navLinks

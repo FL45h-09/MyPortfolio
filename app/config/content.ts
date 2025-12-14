@@ -1,9 +1,8 @@
 import { SiHtml5, SiCss3, SiTailwindcss, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiPhp, SiMysql, SiNodedotjs, SiMongodb } from "react-icons/si";
-import { FaCodeCommit } from "react-icons/fa6";
+import { FaHome, FaUser, FaProjectDiagram, FaTools, FaBriefcase, FaGraduationCap, FaEnvelope, FaChartBar } from 'react-icons/fa';
 import { FiMail, FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 import { GiMaterialsScience } from "react-icons/gi";
-import { link } from "fs";
 
 export const ProfileData = {
     logoText: 'dev.Maanus',
@@ -19,6 +18,16 @@ export const ProfileData = {
     Availability: "Yes",
     CurrentlyWorking: "None",
     Location: "Mumbai, India",
+    navLinks : [
+      { href: '/', label: 'Introduction', icon: FaHome },
+      { href: '/about', label: 'About Me', icon: FaUser },
+      { href: '/projects', label: 'Projects', icon: FaProjectDiagram },
+      { href: '/skills-tools', label: 'Skills & Tools', icon: FaTools },
+      { href: '/experience', label: 'Experience', icon: FaBriefcase },
+      { href: '/education', label: 'Education', icon: FaGraduationCap },
+      { href: '/stats', label: 'Stats', icon: FaChartBar },
+      { href: '/contact', label: 'Contact', icon: FaEnvelope },
+    ],
     skillsIntro: `As a full-stack Software Engineer, I specialize in building scalable web applications using modern technologies such as Next.js, React, and Tailwind CSS. I'm also expanding my expertise into DevOps and cloud practices to create efficient, maintainable, robust web solutions.`,
     skills: [
         { name: "HTML5", icon: SiHtml5 },

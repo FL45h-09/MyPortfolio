@@ -1,34 +1,54 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { navLinks as items } from '@/config/NavLinks';
+import { ProfileData as data } from '@/config/content';
 import { usePathname } from 'next/navigation';
+import { useMenuStore } from '@/store/useMenuStore';
 
 export const Sidebar: React.FC = () => {
   const pathname = usePathname();
+  const {navLinks} = data;
+  const { open, close } = useMenuStore();
 
   return (
-    <aside className="sidebar h-full bg-transparent hidden lg:inline-block">
-      <nav className="mt-6 space-y-1">
-        {items.map((it) => {
-          const isActive = pathname === it.href;
+    <>
+      {/* BACKDROP */}
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          onClick={close}
+        />
+      )}
 
-          return (
-            <Link
-              key={it.href}
-              href={it.href}
-              className={`flex items-center gap-2 text-sm px-2 py-3 rounded-md hover:bg-(--btn-bg) transition border border-transparent ${
-                isActive 
-                  ? 'bg-(--btn-bg) hover:border-(--primar-color)' // active styles
-                  : ''
-              }`}
-            >
-              <it.icon />
-              <span>{it.label}</span>
-            </Link>
-          );
-        })}
-      </nav>
-    </aside>
+      <aside
+        className={`
+          sidebar bg-(--bg) border-r border-(--border)
+          lg:relative lg:translate-x-0
+          fixed top-0 left-0 h-full w-64 z-50
+          transform transition-transform duration-300
+          ${open ? 'translate-x-0' : '-translate-x-full'}
+        `}
+      >
+        <nav className="mt-6 space-y-1 p-4">
+          {navLinks.map((item) => {
+            const isActive = pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={close}
+                className={`flex items-center gap-2 text-sm px-2 py-3 rounded-md hover:bg-(--btn-bg) transition border border-transparent ${
+                  isActive ? 'bg-(--btn-bg) border-(--primary-color)' : ''
+                }`}
+              >
+                <item.icon />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
+      </aside>
+    </>
   );
 };

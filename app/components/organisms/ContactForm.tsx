@@ -27,7 +27,7 @@ export function ContactForm() {
             autoComplete="name"
             className="w-full p-3 rounded-xl bg-(--btn-bg) border border-(--border) 
             text-(--text) placeholder:text-neutral-500
-            focus:border-(--primar-color) focus:ring-1 focus:ring-site-primary 
+            focus:border-(--primary-color) focus:ring-1 focus:ring-site-primary 
             outline-none transition-all"
           />
           <ValidationError prefix="Name" field="fullName" errors={state.errors} />
@@ -46,7 +46,7 @@ export function ContactForm() {
             autoComplete="email"
             className="w-full p-3 rounded-xl bg-(--btn-bg) border border-(--border) 
             text-(--text) placeholder:text-neutral-500
-            focus:border-(--primar-color) focus:ring-1 focus:ring-site-primary 
+            focus:border-(--primary-color) focus:ring-1 focus:ring-site-primary 
             outline-none transition-all"
           />
           <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -64,7 +64,7 @@ export function ContactForm() {
             autoComplete="message"
             className="w-full h-40 p-3 rounded-xl bg-(--btn-bg) border border-(--border) 
             text-(--text) placeholder:text-neutral-500
-            focus:border-(--primar-color) focus:ring-1 focus:ring-site-primary 
+            focus:border-(--primary-color) focus:ring-1 focus:ring-site-primary 
             outline-none transition-all resize-none"
           />
           <ValidationError prefix="Message" field="message" errors={state.errors} />
